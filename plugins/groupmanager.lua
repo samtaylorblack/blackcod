@@ -1712,15 +1712,15 @@ local cmdss = redis:hget('group:'..msg.to.id..':cmd', 'bot')
 	end
 if not lang then
 local settings = data[tostring(target)]["settings"] 
-text = "*Group Settings:*\n_Lock edit :_ *"..settings.lock_edit.."*\n_Lock links :_ *"..settings.lock_link.."*\n_Lock tags :_ *"..settings.lock_tag.."*\n_Lock Join :_ *"..settings.lock_join.."*\n_Lock flood :_ *"..settings.lock_flood.."*\n_Lock spam :_ *"..settings.lock_spam.."*\n_Lock mention :_ *"..settings.lock_mention.."*\n_Lock arabic :_ *"..settings.lock_arabic.."*\n_Lock webpage :_ *"..settings.lock_webpage.."*\n_Lock markdown :_ *"..settings.lock_markdown.."*\n_Group welcome :_ *"..settings.welcome.."*\n_Lock pin message :_ *"..settings.lock_pin.."*\n_Bots protection :_ *"..settings.lock_bots.."*\n_Flood sensitivity :_ *"..NUM_MSG_MAX.."*\n_Character sensitivity :_ *"..SETCHAR.."*\n_Flood check time :_ *"..TIME_CHECK.."*\n*____________________*\n_Bot Commands :_ *"..cmdsss.."*\n_Expire Date :_ *"..expire_date.."*\n*Bot channel*: @BeyondTeam\n*Group Language* : *EN*"
+ text = "*Group Settings👥⚙:*\n_🔹Lock edit :_ *"..settings.lock_edit.."*\n_🔹Lock links :_ *"..settings.lock_link.."*\n_🔹Lock tags :_ *"..settings.lock_tag.."*\n_🔹Lock flood :_ *"..settings.flood.."*\n_🔹Lock spam :_ *"..settings.lock_spam.."*\n_🔹Lock mention :_ *"..settings.lock_mention.."*\n_🔸Lock arabic :_ *"..settings.lock_arabic.."*\n_🔸Lock webpage :_ *"..settings.lock_webpage.."*\n_🔸Lock markdown :_ *"..settings.lock_markdown.."*\n_🔸Group welcome :_ *"..settings.welcome.."*\n_🔸Lock pin message :_ *"..settings.lock_pin.."*\n_🔸Bots protection :_ *"..settings.lock_bots.."*\n_🔸Flood sensitivity :_ *"..NUM_MSG_MAX.."*\n*____________________*\n_⌚️Expire Date :_ *"..expire_date.."*\n*Bot channel🔮*: @GODILOVEYOUME2\n*Group Language🌐* : *English🇮🇸*"
 else
 local settings = data[tostring(target)]["settings"] 
- text = "*تنظیمات گروه:*\n_قفل ویرایش پیام :_ *"..settings.lock_edit.."*\n_قفل لینک :_ *"..settings.lock_link.."*\n_قفل ورود :_ *"..settings.lock_join.."*\n_قفل تگ :_ *"..settings.lock_tag.."*\n_قفل پیام مکرر :_ *"..settings.lock_flood.."*\n_قفل هرزنامه :_ *"..settings.lock_spam.."*\n_قفل فراخوانی :_ *"..settings.lock_mention.."*\n_قفل عربی :_ *"..settings.lock_arabic.."*\n_قفل صفحات وب :_ *"..settings.lock_webpage.."*\n_قفل فونت :_ *"..settings.lock_markdown.."*\n_پیام خوشآمد گویی :_ *"..settings.welcome.."*\n_قفل سنجاق کردن :_ *"..settings.lock_pin.."*\n_محافظت در برابر ربات ها :_ *"..settings.lock_bots.."*\n_حداکثر پیام مکرر :_ *"..NUM_MSG_MAX.."*\n_حداکثر حروف مجاز :_ *"..SETCHAR.."*\n_زمان بررسی پیام های مکرر :_ *"..TIME_CHECK.."*\n*____________________*\n_دستورات ربات :_ *"..cmdsss.."*\n_تاریخ انقضا :_ *"..expire_date.."*\n*کانال ما*: @BeyondTeam\n_زبان سوپرگروه_ : *فارسی*"
+ text = "*تنظیمات گروه👥⚙:*\n_🔹قفل ویرایش پیام :_ *"..settings.lock_edit.."*\n_🔹قفل لینک :_ *"..settings.lock_link.."*\n_🔹قفل تگ :_ *"..settings.lock_tag.."*\n_🔹قفل پیام مکرر :_ *"..settings.flood.."*\n_🔹قفل هرزنامه :_ *"..settings.lock_spam.."*\n_🔹قفل فراخوانی :_ *"..settings.lock_mention.."*\n_🔸قفل عربی :_ *"..settings.lock_arabic.."*\n_🔸قفل صفحات وب :_ *"..settings.lock_webpage.."*\n_🔸قفل فونت :_ *"..settings.lock_markdown.."*\n_🔸پیام خوشآمد گویی :_ *"..settings.welcome.."*\n_🔸قفل سنجاق کردن :_ *"..settings.lock_pin.."*\n_🔸محافظت در برابر ربات ها :_ *"..settings.lock_bots.."*\n_🔸حداکثر پیام مکرر :_ *"..NUM_MSG_MAX.."*\n*____________________*\n_⌚️تاریخ انقضا :_ *"..expire_date.."*\n*🔮کانال ما*: @GODILOVEYOUME2\n_🌐زبان سوپرگروه_ : *فارسی🇮🇷*"
 end
-text = string.gsub(text, 'yes', '✅')
-text = string.gsub(text, 'no', '❌')
+text = string.gsub(text, 'yes', '🔐')
+text = string.gsub(text, 'no', '🔓')
 if lang and tonumber(NUM_MSG_MAX) < 10 then
-text = string.gsub(text, '0', '0⃣')
+text = string.gsub(text, '0', '0️⃣')
 text = string.gsub(text, '1', '1⃣')
 text = string.gsub(text, '2', '2️⃣')
 text = string.gsub(text, '3', '3️⃣')
@@ -1731,7 +1731,7 @@ text = string.gsub(text, '7', '7️⃣')
 text = string.gsub(text, '8', '8️⃣')
 text = string.gsub(text, '9', '9️⃣')
 elseif not lang then
-text = string.gsub(text, '0', '0⃣')
+text = string.gsub(text, '0', '0️⃣')
 text = string.gsub(text, '1', '1⃣')
 text = string.gsub(text, '2', '2️⃣')
 text = string.gsub(text, '3', '3️⃣')
@@ -2740,10 +2740,10 @@ elseif tonumber(check_time) > 86400 then
 end
 if not lang then
 local mutes = data[tostring(target)]["mutes"] 
-  text = " *Group Mute List* : \n_Mute gif :_ *"..mutes.mute_gif.."*\n_Mute text :_ *"..mutes.mute_text.."*\n_Mute inline :_ *"..mutes.mute_inline.."*\n_Mute game :_ *"..mutes.mute_game.."*\n_Mute photo :_ *"..mutes.mute_photo.."*\n_Mute video :_ *"..mutes.mute_video.."*\n_Mute audio :_ *"..mutes.mute_audio.."*\n_Mute voice :_ *"..mutes.mute_voice.."*\n_Mute sticker :_ *"..mutes.mute_sticker.."*\n_Mute contact :_ *"..mutes.mute_contact.."*\n_Mute forward :_ *"..mutes.mute_forward.."*\n_Mute location :_ *"..mutes.mute_location.."*\n_Mute document :_ *"..mutes.mute_document.."*\n_Mute TgService :_ *"..mutes.mute_tgservice.."*\n_Mute Keyboard :_ *"..mutes.mute_keyboard.."*\n_Mute All :_ "..mute_all1.."\n*____________________*\n*Bot channel*: @BeyondTeam\n*Group Language* : *EN*"
+ text = " *Group Mute List👥🔇* : \n_Mute all🔹 : _ *"..mutes.mute_all.."*\n_Mute gif🔸 :_ *"..mutes.mute_gif.."*\n_Mute text🔹 :_ *"..mutes.mute_text.."*\n_Mute inline🔸 :_ *"..mutes.mute_inline.."*\n_Mute game🔹 :_ *"..mutes.mute_game.."*\n_Mute photo🔸 :_ *"..mutes.mute_photo.."*\n_Mute video :_ *"..mutes.mute_video.."*\n_Mute audio🔹 :_ *"..mutes.mute_audio.."*\n_Mute voice :_ *"..mutes.mute_voice.."*\n_Mute sticker🔹 :_ *"..mutes.mute_sticker.."*\n_Mute contact🔸 :_ *"..mutes.mute_contact.."*\n_Mute forward🔹 :_ *"..mutes.mute_forward.."*\n_Mute location🔸 :_ *"..mutes.mute_location.."*\n_Mute document🔹 :_ *"..mutes.mute_document.."*\n_Mute TgService🔸 :_ *"..mutes.mute_tgservice.."*\n_Mute Keyboard🔹 :_ *"..mutes.mute_keyboard.."*\n*____________________*\n*Bot channel🔮*: @GODILOVEYOUME2\n*Group Language* : *English🇮🇸*"
 else
 local mutes = data[tostring(target)]["mutes"] 
- text = " *لیست بیصدا ها* : \n_بیصدا تصاویر متحرک :_ *"..mutes.mute_gif.."*\n_بیصدا متن :_ *"..mutes.mute_text.."*\n_بیصدا کیبورد شیشه ای :_ *"..mutes.mute_inline.."*\n_بیصدا بازی های تحت وب :_ *"..mutes.mute_game.."*\n_بیصدا عکس :_ *"..mutes.mute_photo.."*\n_بیصدا فیلم :_ *"..mutes.mute_video.."*\n_بیصدا آهنگ :_ *"..mutes.mute_audio.."*\n_بیصدا صدا :_ *"..mutes.mute_voice.."*\n_بیصدا برچسب :_ *"..mutes.mute_sticker.."*\n_بیصدا مخاطب :_ *"..mutes.mute_contact.."*\n_بیصدا نقل قول :_ *"..mutes.mute_forward.."*\n_بیصدا موقعیت :_ *"..mutes.mute_location.."*\n_بیصدا اسناد :_ *"..mutes.mute_document.."*\n_بیصدا خدمات تلگرام :_ *"..mutes.mute_tgservice.."*\n_بیصدا صفحه کلید :_ *"..mutes.mute_keyboard.."*\n_بیصدا همه پیام ها :_ "..mute_all2.."\n*____________________*\n*Bot channel*: @BeyondTeam\n_زبان سوپرگروه_ : *فارسی*"
+ text = " *👥🔇لیست بیصدا ها* : \n_🔹بیصدا همه : _ *"..mutes.mute_all.."*\n_🔸بیصدا تصاویر متحرک :_ *"..mutes.mute_gif.."*\n_🔹بیصدا متن :_ *"..mutes.mute_text.."*\n_🔸بیصدا کیبورد شیشه ای :_ *"..mutes.mute_inline.."*\n_🔹بیصدا بازی های تحت وب :_ *"..mutes.mute_game.."*\n_🔸بیصدا عکس :_ *"..mutes.mute_photo.."*\n_🔹بیصدا فیلم :_ *"..mutes.mute_video.."*\n_بیصدا آهنگ :_ *"..mutes.mute_audio.."*\n_🔹بیصدا صدا :_ *"..mutes.mute_voice.."*\n_🔸بیصدا برچسب :_ *"..mutes.mute_sticker.."*\n_🔹بیصدا مخاطب :_ *"..mutes.mute_contact.."*\n_🔸بیصدا نقل قول :_ *"..mutes.mute_forward.."*\n_🔹بیصدا موقعیت :_ *"..mutes.mute_location.."*\n_🔸بیصدا اسناد :_ *"..mutes.mute_document.."*\n_🔹بیصدا خدمات تلگرام :_ *"..mutes.mute_tgservice.."*\n_🔸بیصدا صفحه کلید :_ *"..mutes.mute_keyboard.."*\n*____________________*\n*Bot channel🔮*: @GODILOVEYOUME2\n_زبان سوپرگروه_ : *فارسی🇮🇷*"
 end
 text = string.gsub(text, 'yes', '🔇')
 text = string.gsub(text, 'no', '🔉')
@@ -2770,15 +2770,15 @@ if not matches[2] and not msg.reply_id then
 local function getpro(arg, data)
    if data.photos_[0] then
        if not lang then
-            tdcli.sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, data.photos_[0].sizes_[1].photo_.persistent_id_,'Chat ID : '..msg.to.id..'\nUser ID : '..msg.from.id,dl_cb,nil)
+            tdcli.sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, data.photos_[0].sizes_[1].photo_.persistent_id_,'Chat ID💠 : '..msg.to.id..'\nUser ID🆔 : '..msg.from.id,dl_cb,nil)
        elseif lang then
-          tdcli.sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, data.photos_[0].sizes_[1].photo_.persistent_id_,'شناسه گروه : '..msg.to.id..'\nشناسه شما : '..msg.from.id,dl_cb,nil)
+          tdcli.sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, data.photos_[0].sizes_[1].photo_.persistent_id_,'💠شناسه گروه : '..msg.to.id..'\nشناسه شما🆔 : '..msg.from.id,dl_cb,nil)
      end
    else
        if not lang then
-      tdcli.sendMessage(msg.to.id, msg.id_, 1, "`You Have Not Profile Photo...!`\n\n> *Chat ID :* `"..msg.to.id.."`\n*User ID :* `"..msg.from.id.."`", 1, 'md')
+      tdcli.sendMessage(msg.to.id, msg.id_, 1, "`You Have Not Profile Photo...🌄!`\n\n> *Chat ID👥 :* `"..msg.to.id.."`\n*User ID🆔 :* `"..msg.from.id.."`", 1, 'md')
        elseif lang then
-      tdcli.sendMessage(msg.to.id, msg.id_, 1, "_شما هیچ عکسی ندارید...!_\n\n> _شناسه گروه :_ `"..msg.to.id.."`\n_شناسه شما :_ `"..msg.from.id.."`", 1, 'md')
+      tdcli.sendMessage(msg.to.id, msg.id_, 1, "_🌄شما هیچ عکسی ندارید...!_\n\n> _👥شناسه گروه :_ `"..msg.to.id.."`\n_🆔شناسه شما :_ `"..msg.from.id.."`", 1, 'md')
             end
         end
    end
@@ -3903,7 +3903,7 @@ if not lang then
 if (matches[1]:lower() == "help" or matches[1] == 'راهنما') and is_mod(msg) then
 if not lang then
 text = [[
-*Beyond Bot Commands:*
+*Black Bot Commands💎:*
 *!setmanager* `[username|id|reply]` 
 _Add User To Group Admins(CreatorBot)_
 *!Remmanager* `[username|id|reply]` 
@@ -4018,7 +4018,7 @@ _Its Means, Only Group_ *Moderators/Owners* _Can Use It!_
 elseif lang then
 
 text = [[
-*دستورات ربات بیوند:*
+*دستورات ربات بلک💎:*
 *ادمین گروه* `[username|id|reply]` 
 _افزودن ادمین گروه(درصورت اینکه ربات سازنده  گروه)_
 *حذف ادمین گروه* `[username|id|reply]` 
@@ -4237,9 +4237,9 @@ local data = load_data(_config.moderation.data)
 rules = administration[arg.chat_id]['rules']
 else
    if not lang then
-     rules = "ℹ️ The Default Rules :\n1⃣ No Flood.\n2⃣ No Spam.\n3⃣ No Advertising.\n4⃣ Try to stay on topic.\n5⃣ Forbidden any racist, sexual, homophobic or gore content.\n➡️ Repeated failure to comply with these rules will cause ban.\n@BeyondTeam"
+     rules = "ℹ️ The Default Rules :\n1⃣ No Flood.\n2⃣ No Spam.\n3⃣ No Advertising.\n4⃣ Try to stay on topic.\n5⃣ Forbidden any racist, sexual, homophobic or gore content.\n➡️ Repeated failure to comply with these rules will cause ban.\n@GODILOVEYOUME2"
     elseif lang then
-       rules = "ℹ️ قوانین پپیشفرض:\n1⃣ ارسال پیام مکرر ممنوع.\n2⃣ اسپم ممنوع.\n3⃣ تبلیغ ممنوع.\n4⃣ سعی کنید از موضوع خارج نشید.\n5⃣ هرنوع نژاد پرستی, شاخ بازی و پورنوگرافی ممنوع .\n➡️ از قوانین پیروی کنید, در صورت عدم رعایت قوانین اول اخطار و در صورت تکرار مسدود.\n@BeyondTeam"
+       rules = "ℹ️ قوانین پپیشفرض:\n1⃣ ارسال پیام مکرر ممنوع.\n2⃣ اسپم ممنوع.\n3⃣ تبلیغ ممنوع.\n4⃣ سعی کنید از موضوع خارج نشید.\n5⃣ هرنوع نژاد پرستی, شاخ بازی و پورنوگرافی ممنوع .\n➡️ از قوانین پیروی کنید, در صورت عدم رعایت قوانین اول اخطار و در صورت تکرار مسدود.\n@GODILOVEYOUME2"
  end
 end
 if data.username_ then
