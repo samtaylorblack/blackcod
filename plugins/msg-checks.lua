@@ -1,6 +1,5 @@
 --Begin msg_checks.lua By @SoLiD
 local TIME_CHECK = 2
-
 local function pre_process(msg)
 local data = load_data(_config.moderation.data)
 local chat = msg.to.id
@@ -10,14 +9,7 @@ local is_chat = msg.to.type == "chat"
 local auto_leave = 'auto_leave_bot'
 local hash = "gp_lang:"..chat
 local lang = redis:get(hash)
-local muteallchk = 'muteall:'..msg.to.id
-if is_channel or is_chat then
-        local TIME_CHECK = 2
-        if data[tostring(chat)] then
-          if data[tostring(chat)]['settings']['time_check'] then
-            TIME_CHECK = tonumber(data[tostring(chat)]['settings']['time_check'])
-          end
-        end
+   if is_channel or is_chat then
     if msg.text then
   if msg.text:match("(.*)") then
     if not data[tostring(msg.to.id)] and not redis:get(auto_leave) and not is_admin(msg) then
@@ -26,32 +18,15 @@ if is_channel or is_chat then
       end
    end
 end
-  if redis:get(muteallchk) and not is_mod(msg) and not is_whitelist(msg.from.id, msg.to.id) then
-  if is_channel then
-    del_msg(chat, tonumber(msg.id))
-	elseif is_chat then
-	kick_user(user, chat)
-  end
-  end
-if not redis:get('autodeltime') then
-redis:setex('autodeltime', 14400, true)
-     run_bash("rm -rf ~/.telegram-cli/data/sticker/*")
-     run_bash("rm -rf ~/.telegram-cli/data/photo/*")
-     run_bash("rm -rf ~/.telegram-cli/data/animation/*")
-     run_bash("rm -rf ~/.telegram-cli/data/video/*")
-     run_bash("rm -rf ~/.telegram-cli/data/audio/*")
-     run_bash("rm -rf ~/.telegram-cli/data/voice/*")
-     run_bash("rm -rf ~/.telegram-cli/data/temp/*")
-     run_bash("rm -rf ~/.telegram-cli/data/thumb/*")
-     run_bash("rm -rf ~/.telegram-cli/data/document/*")
-     run_bash("rm -rf ~/.telegram-cli/data/profile_photo/*")
-     run_bash("rm -rf ~/.telegram-cli/data/encrypted/*")
-	 run_bash("rm -rf ./photos/*")
-end
     if data[tostring(chat)] and data[tostring(chat)]['mutes'] then
 		mutes = data[tostring(chat)]['mutes']
 	else
 		return
+	end
+	if mutes.mute_all then
+		mute_all = mutes.mute_all
+	else
+		mute_all = 'no'
 	end
 	if mutes.mute_gif then
 		mute_gif = mutes.mute_gif
@@ -138,11 +113,6 @@ end
 	else
 		lock_link = 'no'
 	end
-	if settings.lock_join then
-		lock_join = settings.lock_join
-	else
-		lock_join = 'no'
-	end
 	if settings.lock_tag then
 		lock_tag = settings.lock_tag
 	else
@@ -173,8 +143,8 @@ end
 	else
 		lock_spam = 'no'
 	end
-	if settings.lock_flood then
-		lock_flood = settings.lock_flood
+	if settings.flood then
+		lock_flood = settings.flood
 	else
 		lock_flood = 'no'
 	end
@@ -192,20 +162,6 @@ end
   if mute_tgservice == "yes" then
 del_msg(chat, tonumber(msg.id))
   end
-end
-if not is_mod(msg) and not is_whitelist(msg.from.id, msg.to.id) then
-	if msg.adduser or msg.joinuser then
-		if lock_join == "yes" then
-			function join_kick(arg, data)
-				kick_user(data.id_, msg.to.id)
-			end
-			if msg.adduser then
-				tdcli.getUser(msg.adduser, join_kick, nil)
-			elseif msg.joinuser then
-				tdcli.getUser(msg.joinuser, join_kick, nil)
-			end
-		end
-	end
 end
    if msg.pinned and is_channel then
   if lock_pin == "yes" then
@@ -228,7 +184,7 @@ end
           end
       end
   end
-      if not is_mod(msg) and not is_whitelist(msg.from.id, msg.to.id) then
+      if not is_mod(msg) then
 if msg.edited and lock_edit == "yes" then
  if is_channel then
  del_msg(chat, tonumber(msg.id))
@@ -365,17 +321,9 @@ kick_user(user, chat)
 end
 if msg.text then
 			local _nl, ctrl_chars = string.gsub(msg.text, '%c', '')
-        local max_chars = 40
-        if data[tostring(msg.to.id)] then
-          if data[tostring(msg.to.id)]['settings']['set_char'] then
-            max_chars = tonumber(data[tostring(msg.to.id)]['settings']['set_char'])
-          end
-        end
 			 local _nl, real_digits = string.gsub(msg.text, '%d', '')
-			local max_real_digits = tonumber(max_chars) * 50
-			local max_len = tonumber(max_chars) * 51
 			if lock_spam == "yes" then
-			if string.len(msg.text) > max_len or ctrl_chars > max_chars or real_digits > max_real_digits then
+   if string.len(msg.text) > 2049 or ctrl_chars > 40 or real_digits > 2000 then
  if is_channel then
  del_msg(chat, tonumber(msg.id))
   elseif is_chat then
@@ -424,6 +372,13 @@ kick_user(user, chat)
      end
    end
 end
+if mute_all == "yes" then 
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
 if msg.content_.entities_ and msg.content_.entities_[0] then
     if msg.content_.entities_[0].ID == "MessageEntityMentionName" then
       if lock_mention == "yes" then
@@ -455,12 +410,6 @@ kick_user(user, chat)
  end
 if msg.to.type ~= 'pv' then
   if lock_flood == "yes" then
-    if is_mod(msg) and is_whitelist(msg.from.id, msg.to.id) then
-    return
-  end
-  if msg.adduser or msg.joinuser then
-    return
-  end
     local hash = 'user:'..user..':msgs'
     local msgs = tonumber(redis:get(hash) or 0)
         local NUM_MSG_MAX = 5
@@ -470,6 +419,12 @@ if msg.to.type ~= 'pv' then
           end
         end
     if msgs > NUM_MSG_MAX then
+  if is_mod(msg) then
+    return
+  end
+  if msg.adduser and msg.from.id then
+    return
+  end
    if msg.from.username then
       user_name = "@"..msg.from.username
          else
@@ -480,7 +435,6 @@ return
 else
    del_msg(chat, msg.id)
     kick_user(user, chat)
-	redis:del(hash)
    if not lang then
   tdcli.sendMessage(chat, msg.id, 0, "_User_ "..user_name.." `[ "..user.." ]` _has been_ *kicked* _because of_ *flooding*", 0, "md")
    elseif lang then
@@ -494,11 +448,9 @@ redis:setex('sender:'..user..':flood', 30, true)
            end
       end
    end
-   return msg
 end
 return {
 	patterns = {},
-	patterns_fa = {},
 	pre_process = pre_process
 }
 --End msg_checks.lua--
